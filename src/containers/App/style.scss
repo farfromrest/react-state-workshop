@@ -1,0 +1,23 @@
+@import '../../stylesheets/color';
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.view-all-link {
+  margin-top: 1em;
+  text-decoration: underline;
+  cursor: pointer;
+  display: block;
+}
+
+.buttons {
+  text-align: center;
+}

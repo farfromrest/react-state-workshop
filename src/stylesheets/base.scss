@@ -1,0 +1,8 @@
+@import 'color';
+@import 'fonts';
+
+html {
+  @include sans-serif-font;
+  background-color: $off-white;
+  color: $brown;
+}

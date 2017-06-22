@@ -1,0 +1,17 @@
+@import '../../stylesheets/fonts';
+@import '../../stylesheets/color';
+
+.wrapper {
+  text-align: center;
+}
+
+.button {
+  @include serif-font;
+  font-size: 1.3em;
+  display: inline-block;
+  background-color: $yellow;
+  cursor: pointer;
+  border-radius: 1em;
+  line-height: 2;
+  padding: 0 1em;
+}
