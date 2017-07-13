@@ -1,10 +1,11 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import Header from '../../components/Header'
 import Loader from '../../components/Loader'
 import Button from '../../components/Button'
 import Placeholder from '../../components/Placeholder'
-import TryCoffeeApiService from '../../services/try-coffee-api'
+import { fetchSuggestion } from '../../store/actions'
 
 import '../../stylesheets/reset.scss'
 import '../../stylesheets/base.scss'
@@ -25,12 +26,10 @@ class App extends React.Component {
       isLoading: true
     })
 
-    TryCoffeeApiService
-      .getSuggestion()
-      .then(coffeeShop => {
+    this.props.dispatch(fetchSuggestion())
+      .then(() => {
         this.setState({
-          isLoading: false,
-          coffeeShop
+          isLoading: false
         })
       })
 
@@ -42,8 +41,8 @@ class App extends React.Component {
     if (this.state.isLoading) {
       body = <Loader />
     } else {
-      if (this.state.coffeeShop) {
-        body = <div>{this.state.coffeeShop.name}</div>
+      if (this.props.coffeeShop) {
+        body = <div>{this.props.coffeeShop.name}</div>
       } else {
         body = (
           <div>
@@ -64,4 +63,10 @@ class App extends React.Component {
   }
 }
 
-export default App
+function mapStateToProps (state) {
+  return {
+    coffeeShop: state.coffeeShop
+  }
+}
+
+export default connect(mapStateToProps)(App)
